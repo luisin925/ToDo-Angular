@@ -13,14 +13,12 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
   ],
-  entryComponents: [
-
-  ],
+  entryComponents: [],
   imports: [
     BrowserModule, 
-    HttpClientModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

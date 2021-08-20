@@ -7,16 +7,6 @@ import { DatosService } from '../Provider/datos.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  constructor() {}
 
-  listas
-
-  constructor(public datosService: DatosService) {}
-
-  ionViewDidLoad() {
-    this.datosService.obtenerDatos()
-      .subscribe(
-        (data) => { this.listas = data; },
-        (error) => { console.log(error); }
-      )
-  }
 }

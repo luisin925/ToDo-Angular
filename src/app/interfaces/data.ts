@@ -4,3 +4,4 @@ export interface Data {
     active: boolean;
     prioridad: string;
 }
+

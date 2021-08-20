@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatosService } from './Provider/datos.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  title: 'angular-http-client';
+  tareas;
+  constructor(
+    private datosService: DatosService
+  ) {}
+
+getList(){
+  this.datosService.getData()
+  .subscribe(lista => {
+    this.tareas = lista;
+    console.log(this.tareas);
+  })
+}
+  
 }

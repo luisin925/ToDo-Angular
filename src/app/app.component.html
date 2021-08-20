@@ -1,3 +1,9 @@
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
-</ion-app>
+<button (click)="getList()">Obtener Lista</button>
+<ul>
+  <li *ngFor="let tarea of tareas"> 
+    {{tarea.id}} 
+    {{tarea.title}} 
+    {{tarea.active}} 
+    {{tarea.prioridad}}
+  </li>
+</ul>

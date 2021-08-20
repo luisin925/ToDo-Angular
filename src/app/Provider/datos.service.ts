@@ -1,17 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { Data } from '../interfaces/data';
 
-@Injectable(){
-  providedIn: 'root';
-}
+@Injectable({
+  providedIn: 'root'
+})
+
 export class DatosService {
 
-  constructor(public http: HttpClient) { 
-    console.log('Hola soy tu provedor');
+  constructor(private http: HttpClient) {}
+  
+  getData(){
+    const url = 'https://demo6193376.mockable.io/todos';
+    return this.http.get<Data[]>(url);
   }
 
-  obtenerDatos(){
-    return this.http.get('https://demo6193376.mockable.io/todos');
-  }
+
 }
