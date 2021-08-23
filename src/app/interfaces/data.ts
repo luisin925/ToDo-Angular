@@ -1,5 +1,5 @@
 export interface Data {
-    tittle: string;
+    title: string;
     id: number;
     active: boolean;
     prioridad: string;

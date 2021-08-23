@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { DatosService } from '../Provider/datos.service';
 
 @Component({
   selector: 'app-home',
@@ -8,5 +7,4 @@ import { DatosService } from '../Provider/datos.service';
 })
 export class HomePage {
   constructor() {}
-
 }
