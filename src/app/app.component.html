@@ -1,57 +1,53 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      ToDo List
-    </ion-title>
-    <ion-searchbar></ion-searchbar>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <ion-button (click)="agregarTarea()">Agregar Tarea</ion-button>
-  <ion-list *ngFor="let lista of listas, let i = index">
-    <ion-item>
-      <ion-avatar>
-        <ion-icon *ngIf="lista.prioridad === 'alta'" name="bookmark" color="danger"></ion-icon>
-        <ion-icon *ngIf="lista.prioridad === 'media'" name="bookmark" color="warning"></ion-icon>
-        <ion-icon *ngIf="lista.prioridad === 'baja'" name="bookmark" color="succes"></ion-icon>
-      </ion-avatar>
-      <ion-checkbox slot="start"></ion-checkbox>
-      <ion-label>
-        {{lista.title}} 
-        {{lista.prioridad}}
-        
-      </ion-label>
-    </ion-item>
-    <ion-chip outline color="white">
-      <ion-icon name="trash-outline" (click)="eliminarTarea(lista.id)"></ion-icon>
-      <ion-label>Eliminar</ion-label>
-    </ion-chip>
-
-    <ion-chip outline color="white">
-      <ion-icon name="create-outline" color="white"></ion-icon>
-      <ion-label>Editar</ion-label>
-    </ion-chip>
-
-  </ion-list>
-</ion-content>
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        ToDo List
+      </ion-title>
+      <ion-searchbar color="transparent"></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
 
 
+  <ion-content fullscreen>
+    <div class="bg-list">
+      <ion-card>
+        <ion-item lines="none">
+          <ion-input placeholder="Describir Tarea" (ionChange)="obtenerTarea($event)"></ion-input>
+          <ion-button (click)="agregarTarea()" slot="end" shape="round">
+            <ion-icon slot="icon-only" name="add"></ion-icon>
+          </ion-button>
+          <ion-select placeholder="Prioridad" (ionChange)="obtenerPrioridad($event)">
+            <ion-select-option value="alta">Alta</ion-select-option>
+            <ion-select-option value="media">Media</ion-select-option>
+            <ion-select-option value="baja">Baja</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card>
 
-<ion-fab horizontal="end" vertical="bottom" slot="fixed">
-  <ion-fab-button color="light">
-    <ion-icon name="add-outline"></ion-icon>
-  </ion-fab-button>
-  <ion-fab-list side="start">
-    <ion-item>
-      <ion-label position="floating">Floating Label</ion-label>
-      <ion-textarea></ion-textarea>
-    </ion-item>
-    <ion-item>
-      <ion-range min="1" max="3" step="1" value="1" snaps color="danger">
-        <ion-icon slot="start" size="small" color="danger" name="thermometer"></ion-icon>
-        <ion-icon slot="end" color="danger" name="thermometer"></ion-icon>
-      </ion-range>
-    </ion-item>
-  </ion-fab-list>
-</ion-fab>
+      <ion-list *ngFor="let lista of listas, let i = index">
+        <ion-item-sliding>
+          <ion-item lines="none">
+            <ion-avatar>
+              <ion-icon *ngIf="lista.prioridad === 'alta'" name="bookmark" color="danger"></ion-icon>
+              <ion-icon *ngIf="lista.prioridad === 'media'" name="bookmark" color="warning"></ion-icon>
+              <ion-icon *ngIf="lista.prioridad === 'baja'" name="bookmark" color="succes"></ion-icon>
+            </ion-avatar>
+            <ion-checkbox slot="start" color="success" (ionChange)="tareaCompleta($event,lista.id)"></ion-checkbox>
+            <h1>{{lista.title}}</h1>
+          </ion-item>
+          <ion-item-options>
+            <ion-button outline color="white">
+              <ion-icon name="create-outline"></ion-icon>
+              <ion-label>Editar</ion-label>
+            </ion-button>
+            <ion-button (click)="eliminarTarea(lista.id)" outline color="white">
+              <ion-icon name="trash-outline"></ion-icon>
+              <ion-label>Eliminar</ion-label>
+            </ion-button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+  </ion-content>
+</ion-app>

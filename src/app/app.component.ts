@@ -11,6 +11,9 @@ import { Data } from './interfaces/data';
 export class AppComponent implements OnInit {
   listas: Data[];
   lista: Data;
+  todo: string;
+  prioridad: string;
+  active: boolean;
 
   constructor(private datosService: DatosService) {}
   
@@ -22,16 +25,31 @@ export class AppComponent implements OnInit {
 
   agregarTarea() {
     this.datosService.crearLista({
-      id: Math.floor(Math.random() *(1 * 10) + 5),
-      title: 'Comprar sodas',
+      id: Math.floor(Math.random() *(1 * 100) + 5),
+      title: this.todo,
       active: true,
-      prioridad: 'baja',
+      prioridad: this.prioridad,
     });
   }
 
   eliminarTarea(item){
     this.datosService.eliminarLista(item);
-    console.log(this.listas);
+    //console.log(this.listas);
   }
 
+  obtenerTarea(event){
+    //console.log(event.target.value);
+    this.todo = event.target.value;
+  }
+
+  obtenerPrioridad(event){
+    //console.log(event.target.value);
+    this.prioridad = event.target.value;
+  }
+
+  tareaCompleta(event,i){
+      console.log(event.target.checked);
+      console.log(i);
+      this.datosService.completarTarea();
+  }
 }

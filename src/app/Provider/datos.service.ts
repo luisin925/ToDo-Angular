@@ -45,4 +45,8 @@ export class DatosService {
       //const indice = this.todoData.indexOf(4,1);
       this.todoData.splice((item-1),1); 
   }
+
+  completarTarea(){
+    console.log(this.todoData.map);
+  }
 }
